@@ -53,13 +53,17 @@ var paragraph = document.getElementsByClassName('exercise5')[0];
 var tempsPas = setInterval(temps, 1000);
 
 function temps() {
+  var date = Date();
+  date = date.substr(15, 15);
+  date = date.substr(0, 9);
+
   time = time + 1;
-  paragraph.innerHTML = "Temps depuis que tu es sur la page : " + time + " s "+ "<br>" + "La date est: " + Date();
+  paragraph.innerHTML = "Temps depuis que tu es sur la page : " + time + " s "+ "<br>" + "Il est: " + date;
 }
 
 //Exercice 6
 
-var buttonColor = document.getElementsByClassName('exercice6')[0];
+var buttonColor = document.getElementsByClassName('exercise6')[0];
 var nbrClick = 0;
 
 buttonColor.addEventListener("click", function(){
@@ -137,4 +141,53 @@ image.alt = "image 1";
 
 var main = document.getElementsByTagName('main')[0];
 main.appendChild(div);
-console.log(div);
+
+//Exercise 9
+
+var paragraphEx9 = document.getElementsByClassName('exercise9')[0];
+var imgSelected = document.getElementsByTagName('img');
+var stockImg = new Array([]);
+
+//For repete click action
+for (let i = 0; i < imgSelected.length; i++) {
+  imgSelected[i].addEventListener("click", function() {
+
+    stock(this);
+
+  });
+}
+
+function stock(element) {
+
+  if (stockImg.length === 3) {
+    //if stockImg have 3 content
+
+    //take off img
+    imgSelected[0].style.display = "none";
+    imgSelected[1].style.display = "none";
+    imgSelected[2].style.display = "none";
+    //display the paragraph with id in table
+    paragraphEx9.innerHTML = "Félicitations, vous avez cliqué sur les 3 images. Voici leurs id :" + stockImg + "," + element.id;
+
+  } else if ((stockImg.indexOf("paon") === -1 && element.id === "paon") || (stockImg.indexOf("oiseau") === -1 && element.id === "oiseau") || (stockImg.indexOf("hibou") === -1 && element.id === "hibou")) {
+    //if table are not the id
+    stockImg.push(element.id);
+    //take id
+    element.style.cursor = "context-menu";
+    //display cusor pointer and change class
+    element.className = "active";
+  }
+}
+
+//Exercice 10
+
+var buttonEx10 = document.getElementsByClassName('exercise10')[1];
+var divEx10 = document.getElementsByClassName('exercise10')[0];
+
+buttonEx10.addEventListener("click", function() {
+  setTimeout(change, 2000);
+});
+
+function change() {
+  divEx10.innerHTML = "le contenu a changé";
+}
