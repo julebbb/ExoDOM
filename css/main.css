@@ -96,8 +96,31 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
 
+.exercise3 {
+  width: 50%;
+  margin: auto;
+  height: 40vh;
+  background: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.exercise6 {
+  padding: 10px;
+}
+
+.tableau {
+  display: block;
+  margin: auto;
+}
 
 
 
